@@ -1,0 +1,22 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: secsync-cronjob
+  namespace: app
+spec:
+  schedule: "0 * * * *"  # 每小时运行一次
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          serviceAccountName: secsync-sa
+          containers:
+          - name: sync-secrets
+            image: secsync:latest
+            env:
+            - name: SOURCE_NAMESPACE
+              value: "source-namespace"
+            - name: TARGET_NAMESPACES
+              value: "target-namespace1,target-namespace2,target-namespace3"
+          restartPolicy: Never
+      backoffLimit: 4
