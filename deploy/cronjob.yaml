@@ -12,7 +12,7 @@ spec:
           serviceAccountName: secsync-sa
           containers:
           - name: sync-secrets
-            image: secsync:latest
+            image: ghcr.io/bboysoulcn/secsync:latest
             env:
             - name: SOURCE_NAMESPACE
               value: "source-namespace"
