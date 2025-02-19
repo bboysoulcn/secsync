@@ -4,7 +4,10 @@ from kubernetes.client.rest import ApiException
 
 def sync_secrets(source_namespace, target_namespaces, secret_name):
     # 加载Kubernetes配置
-    config.load_kube_config()
+    if os.getenv("KUBERNETES_SERVICE_HOST"):
+        config.load_incluster_config()  # 使用Service Account
+    else:
+        config.load_kube_config()  # 使用本地配置
 
     v1 = client.CoreV1Api()
 

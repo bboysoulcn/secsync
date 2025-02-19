@@ -18,5 +18,7 @@ spec:
               value: "source-namespace"
             - name: TARGET_NAMESPACES
               value: "target-namespace1,target-namespace2,target-namespace3"
+            - name: SECRET_NAME
+              value: "secret-name"
           restartPolicy: Never
       backoffLimit: 4
