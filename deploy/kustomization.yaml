@@ -1,0 +1,5 @@
+resources:
+- cronjob.yaml
+- clusterrole.yaml
+- clusterrolebinding.yaml
+- sa.yaml
